@@ -35,7 +35,7 @@ func CreateMessage(name, greeting string) (string, string) {
 }
 
 func Greet(salutation Salutation) {
-  message1, message2 := CreateMessage("Bob", "Hello")
+  message1, message2 := CreateMessage(s.name, s.greeting)
   fmt.Println(message1)
   fmt.Println(message2)
 }
@@ -64,3 +64,14 @@ func CreateMessage(name, greeting string) (message1 string, message2 string) {
   return
 }
 ```
+
+Variadic functions - We use these to allow multiple parameters to be passed in.
+```go
+func CreateMessage(name, greeting ...string) (message1 string, message2 string) {
+  greetingLength = len(greeting)
+  message1 = greeting[greetingLength-1] + " " + name
+  message2 = "HEY! " + name
+  return
+}
+```
+Notice that we use the built in `len` method to find the length of the given parameter.
