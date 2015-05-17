@@ -55,3 +55,12 @@ func Greet(salutation Salutation) {
   fmt.Println(message1)
 }
 ```
+
+We can clean this up a bit by naming our return values:
+```go
+func CreateMessage(name, greeting string) (message1 string, message2 string) {
+  message1 = greeting + " " + name
+  message2 = "HEY! " + name
+  return
+}
+```
