@@ -1,4 +1,4 @@
-### Module 1: Variables, types, and pointers
+### Module 1: Variables, Types, and Pointers
 
 This stuff is pretty straight forward. In general we declare a variable with:
 ```go
@@ -20,3 +20,4 @@ You can declare and assign multiple variables as once:
 ```go
 a, b, c := 1, 2, 3
 ```
+
