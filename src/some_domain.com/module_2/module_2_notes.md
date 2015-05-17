@@ -142,5 +142,5 @@ func main() {
 Notice that the return function is unnamed. Pretty cool.
 
 Here are some references:
-- (Advanced function usage)[http://golang.org/doc/codewalk/functions/]
-- (Function types)[http://golang.org/ref/spec#Function_types]
+- [Advanced function usage][http://golang.org/doc/codewalk/functions/]
+- [Function types][http://golang.org/ref/spec#Function_types]
