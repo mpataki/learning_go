@@ -30,8 +30,13 @@ func PrintLine(s string) {
 	fmt.Println(s)
 }
 
+func CreatePrintFunction(custom string) Printer {
+	return func(s string) {
+		fmt.Println(s + custom)
+	}
+}
+
 func main() {
 	var s = Salutation{"Bob", "Hello"}
-	Greet(s, Print)
-	Greet(s, PrintLine)
+	Greet(s, CreatePrintFunction("!!!"))
 }

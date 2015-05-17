@@ -125,3 +125,18 @@ func main() {
   Greet(s, PrintLine)
 }
 ```
+
+Let's say that we wanted to add some custom string to the back of whatever we are printing. We could define a new function that takes in two strings, but that would break out `Printer` signature. Instead, we can make a function that takes in the custom string only (thus satisfying the `Printer` signature) and returns a function that prints just as before:
+```go
+func CreatePrintFunction(custom string) Printer {
+  return func(s string) {
+    fmt.Println(s + custom)
+  }
+}
+
+func main() {
+  var s = Salutation{"Bob", "Hello"}
+  Greet(s, CreatePrintFunction("!!!"))
+}
+```
+Notice that the return function is unnamed. Pretty cool.
