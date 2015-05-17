@@ -76,7 +76,16 @@ func CreateMessage(name, greeting ...string) (message1 string, message2 string) 
 ```
 Notice that we use the built in `len` method to find the length of the given parameter.
 
-Functions in go are their own types. We can pass them as parameters into other function so long as we specify the function signature. Here is a complete example that does this:
+Functions in go are their own types. We can pass them as parameters into other function so long as we specify the function signature:
+```go
+func Greet(salutation Salutation, do func(string)) {
+  message1, message2 := CreateMessage(salutation.name, salutation.greeting, "yo")
+  do(message1)
+  do(message2)
+}
+```
+
+We can simplify this a bit by making a new type that encapsulates that function signature. Here is a complete example that does this:
 ```go
 package main
 
@@ -87,7 +96,9 @@ type Salutation struct {
   greeting string
 }
 
-func Greet(salutation Salutation, do func(string)) {
+type Printer func(string)
+
+func Greet(salutation Salutation, do Printer) {
   message1, message2 := CreateMessage(salutation.name, salutation.greeting, "yo")
   do(message1)
   do(message2)
