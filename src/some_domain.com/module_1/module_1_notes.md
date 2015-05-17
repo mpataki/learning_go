@@ -47,3 +47,36 @@ var nt NewType
 nt.some_int = 52
 nt.some_string = "blah"
 ```
+
+Constant types are also available:
+```go
+const PI = 3.14
+```
+
+If we want to declare many `const`s we can do:
+```go
+const(
+  PI = 3.14
+  Language = "Go"
+)
+```
+
+In general we can rely on the types of `const`s to be determined by the language based on how they are assigned and used.
+
+`iota` is another interesting feature of the language. It allows us to simplify the counting process when declaring a wack of `const` variables that we just want to have incrementing values, similar C++'s `enum`
+```go
+const (
+  A = iota
+  B = iota
+  C = iota
+)
+```
+This will yield the values `A = 1`, `B = 2`, `C = 3`. `const` values will we carried forward from previous assignments if none are specified, letting us do stuff like this:
+```go
+const (
+  A = iota
+  B
+  B
+)
+```
+This will yield the same result as the previous example.
