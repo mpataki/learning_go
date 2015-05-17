@@ -12,6 +12,8 @@ func Greet(salutation Salutation) {
 	fmt.Println(salutation.greeting)
 }
 
+func CreateMessage(name, greeting string)
+
 func main() {
 	var s = Salutation{"Bob", "Hello"}
 	Greet(s)
