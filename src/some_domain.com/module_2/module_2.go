@@ -2,6 +2,16 @@ package main
 
 import "fmt"
 
-func main() {
+type Salutation struct {
+  name     string
+  greeting string
+}
 
+func Greet(salutation Salutation) {
+
+}
+
+func main() {
+  var s Salutation{"Bob", "Hello"}
+  Greet(s)
 }

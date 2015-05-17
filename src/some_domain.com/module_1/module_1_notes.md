@@ -43,7 +43,7 @@ This initializes the fields in the struct in the order that they were declared. 
 ```go
 var nt NewType{some_int: 52, some_string: "blah"}
 // or
-var nt NewType
+var nt NewType{}
 nt.some_int = 52
 nt.some_string = "blah"
 ```
