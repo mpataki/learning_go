@@ -19,11 +19,24 @@ func CreateMessage(name, greeting string) {
 }
 ```
 
-Notice how above we haven't specified a return type. This is because we aren't returning anything. In other languages we might need `void` for this, however, not with go.
+Notice how above we haven't specified a return type. This is because we aren't returning anything. In other languages we might need `void` for this, however not with go.
 
 We specify the return type of a function as follows:
 ```go
 func CreateMessage(name, greeting string) string {
   return greeting + " " + name
+}
+```
+
+Returning multiple values from a function:
+```go
+func CreateMessage(name, greeting string) (string, string) {
+  return greeting + " " + name, "HEY! " + name
+}
+
+func Greet(salutation Salutation) {
+  message1, message2 := CreateMessage("Bob", "Hello")
+  fmt.Println(message1)
+  fmt.Println(message2)
 }
 ```
