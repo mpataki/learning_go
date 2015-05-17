@@ -40,3 +40,18 @@ func Greet(salutation Salutation) {
   fmt.Println(message2)
 }
 ```
+
+Let's say that we didn't want to use one of the two values above:
+```go
+func Greet(salutation Salutation) {
+  message1, message2 := CreateMessage("Bob", "Hello") // BAD
+  fmt.Println(message1)
+}
+```
+This thrown an error (that's right, an ERROR) saying that `message2` was declared but not used. We can get around this as follows:
+```go
+func Greet(salutation Salutation) {
+  message1, _ := CreateMessage("Bob", "Hello") // BAD
+  fmt.Println(message1)
+}
+```
