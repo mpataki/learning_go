@@ -80,3 +80,12 @@ const (
 )
 ```
 This will yield the same result as the previous example.
+
+Pointers are supported in Go as well, however they are much simpler than they are in C and C++. A pointer can only ever point to a specific type, and (so far in my learning anyway), it doesn't seem like you can do pointer arithmetic. I believe this is a big part of what makes the language memory safe. Here are some examples that should look familiar:
+```go
+var A int = 5
+var A_ptr *int = &A
+*A_ptr = 6
+// A == 6 now
+```
+So far, it seems like this is the primary means of passing by reference. Whenever we call a function, the arguments are passed by value. If we want to pass by reference, we pass a pointer. The pointer itself will still be pass by value, but obviously the memory address that it represents has not changes. You can then dereference the memory address and mess with the variable that exists outside of the function.
