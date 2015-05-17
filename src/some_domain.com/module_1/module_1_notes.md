@@ -89,3 +89,9 @@ var A_ptr *int = &A
 // A == 6 now
 ```
 So far, it seems like this is the primary means of passing by reference. Whenever we call a function, the arguments are passed by value. If we want to pass by reference, we pass a pointer. The pointer itself will still be pass by value, but obviously the memory address that it represents has not changes. You can then dereference the memory address and mess with the variable that exists outside of the function.
+
+When making packages in Go, the public / private distinction if very straight forward. Anything variable / function that is declared with a capitol letter is public, any with lower case are private:
+```go
+var ThisVariable = 6 // public
+var thisOtherVariable = 6 // private
+```
