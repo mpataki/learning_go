@@ -19,9 +19,11 @@ func CreateMessage(name, greeting string) {
 }
 ```
 
-Notice how above we haven't specified a return type. This is because we aren't returning anything. In other languages we might need `void` for this, however, not with go. nWe specify the return type of a function as follows:
+Notice how above we haven't specified a return type. This is because we aren't returning anything. In other languages we might need `void` for this, however, not with go.
+
+We specify the return type of a function as follows:
 ```go
-func foo(some_number int){
-  // ...
+func CreateMessage(name, greeting string) string {
+  return greeting + " " + name
 }
 ```
