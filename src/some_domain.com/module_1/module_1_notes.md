@@ -21,3 +21,29 @@ You can declare and assign multiple variables as once:
 a, b, c := 1, 2, 3
 ```
 
+You can define your own types using:
+```go
+type NewString string
+```
+
+This sets the new type equal to the type `string`. We can use structs to make this more interesting:
+```go
+type NewType struct{
+  some_string string
+  some_int int
+}
+```
+
+Then we can use this struct as follows:
+```go
+var nt NewType{"blah", 52}
+```
+
+This initializes the fields in the struct in the order that they were declared. We can also do:
+```go
+var nt NewType{some_int: 52, some_string: "blah"}
+// or
+var nt NewType
+nt.some_int = 52
+nt.some_string = "blah"
+```
