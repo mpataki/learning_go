@@ -23,3 +23,30 @@ if prefix := "Mr. "; isFormal {
   do(message2)
 }
 ```
+
+`switch` statements are slightly different in go. The first big difference is that there is no default fall through - so no `break` statements, unless we tell it to fall through explicitly.
+```go
+switch name {
+  case "Bob": prefix = "Mr. "
+  case "Joe": prefix = "Dr. "
+  case "Mary": prefix = "Mrs. "
+  default: prefix = "Dude "
+}
+```
+Or with the `fallthrough`:
+```go
+switch name {
+  case "Bob": prefix = "Mr. "
+  case "Joe": prefix = "Dr. "
+  case "Mary":
+    prefix = "Mrs. "
+    fallthrough
+  default: prefix = "Dude "
+}
+```
+
+Also, you don't need an expression to switch on.
+
+In go, cases can be expressions, not just values like in many other languages.
+
+We can switch on types in go. There is special syntax for this.
