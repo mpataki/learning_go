@@ -60,7 +60,7 @@ Also, you don't need an expression after the switch, and you can use expressions
 switch {
 case name == "Bob":
   prefix = "Mr. "
-case name == "Joe", name == "Amy":
+case name == "Joe", name == "Amy", len(name) == 10:
   prefix = "Dr. "
 case name == "Mary":
   prefix = "Mrs. "
@@ -70,3 +70,18 @@ default:
 ```
 
 We can switch on types in go. There is special syntax for this.
+```go
+func TypeSwitchTest(x interface{}) {
+  switch x.(type) {
+  case int:
+    fmt.Println("int")
+  case string:
+    fmt.Println("string")
+  case Salutation:
+    fmt.Println("salutation")
+  default:
+    fmt.Println("unknown")
+  }
+}
+```
+So there is a fair amount of new stuff happening here. Not all of it will be covered now but just to give a quick overview, the type of `x` is an `interface{}` which is akin to a `void*` where we aren't specifying a type. Really, this is the base type, however we won't get into that here. The point of using it is to show that we can call `x.(type)` in order to pull the type out of `x` and then switch on it. Kind of cool.
