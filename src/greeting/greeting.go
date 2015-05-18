@@ -10,18 +10,17 @@ type Salutation struct {
 type Printer func(string)
 
 func Greet(salutation Salutation, do Printer, isFormal bool) {
-	message1, message2 := CreateMessage(salutation.Name, salutation.Greeting, "yo")
+	message1, message2 := CreateMessage(salutation.Name, salutation.Greeting)
 
-	if isFormal {
+	if prefix := "Mr. "; isFormal {
 		do(message1)
 	}
 
 	do(message2)
 }
 
-func CreateMessage(name string, greeting ...string) (message1 string, message2 string) {
-	greetingLength := len(greeting)
-	message1 = greeting[greetingLength-1] + " " + name
+func CreateMessage(name string, greeting string) (message1 string, message2 string) {
+	message1 = greeting + " " + name
 	message2 = "HEY! " + name
 	return
 }
