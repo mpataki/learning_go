@@ -1,16 +1,16 @@
-package main
+package greeting
 
 import "fmt"
 
 type Salutation struct {
-	name     string
-	greeting string
+	Name     string
+	Greeting string
 }
 
 type Printer func(string)
 
 func Greet(salutation Salutation, do Printer, isFormal bool) {
-	message1, message2 := CreateMessage(salutation.name, salutation.greeting, "yo")
+	message1, message2 := CreateMessage(salutation.Name, salutation.Greeting, "yo")
 
 	if isFormal {
 		do(message1)
@@ -38,9 +38,4 @@ func CreatePrintFunction(custom string) Printer {
 	return func(s string) {
 		fmt.Println(s + custom)
 	}
-}
-
-func main() {
-	var s = Salutation{"Bob", "Hello"}
-	Greet(s, CreatePrintFunction("!!!"), true)
 }
