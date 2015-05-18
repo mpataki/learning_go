@@ -84,4 +84,4 @@ func TypeSwitchTest(x interface{}) {
   }
 }
 ```
-So there is a fair amount of new stuff happening here. Not all of it will be covered now but just to give a quick overview, the type of `x` is an `interface{}` which is akin to a `void*` where we aren't specifying a type. Really, this is the base type, however we won't get into that here. The point of using it is to show that we can call `x.(type)` in order to pull the type out of `x` and then switch on it. Kind of cool.
+So there is a fair amount of new stuff happening here. Not all of it will be covered now but just to give a quick overview, the type of `x` is an `interface{}` which is akin to a `void*` where we aren't specifying an explicit type. Really, this is the base type, however we won't get into that here. The point of using it is to show that we can call `x.(type)` in order to pull the type out of `x` and then switch on it. Kind of cool.
