@@ -10,7 +10,16 @@ if isFormal {
 We can also have an optional statement before the condition.
 ```go
 if prefix := "Mr. "; isFormal {
-  do(message1)
+  do(prefix + message1)
 }
 ```
-This allows us to execute a statement when gets evaluated before the conditional but that is only scoped within the `if` statement block.
+This allows us to specify a statement that gets evaluated before the conditional but that is only scoped within the `if` statement block. You can even use the statement as a part of the `if` conditional.
+
+`else` is also pretty much the same as other languages.
+```go
+if prefix := "Mr. "; isFormal {
+  do(prefix + message1)
+} else {
+  do(message2)
+}
+```

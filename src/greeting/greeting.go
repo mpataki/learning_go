@@ -13,10 +13,10 @@ func Greet(salutation Salutation, do Printer, isFormal bool) {
 	message1, message2 := CreateMessage(salutation.Name, salutation.Greeting)
 
 	if prefix := "Mr. "; isFormal {
-		do(message1)
+		do(prefix + message1)
+	} else {
+		do(message2)
 	}
-
-	do(message2)
 }
 
 func CreateMessage(name string, greeting string) (message1 string, message2 string) {
