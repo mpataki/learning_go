@@ -45,8 +45,28 @@ switch name {
 }
 ```
 
-Also, you don't need an expression to switch on.
+You can also use lists inside the case statement so that a case can happen under multiple conditions.
+```go
+switch name {
+  case "Bob": prefix = "Mr. "
+  case "Joe", "Amy": prefix = "Dr. "
+  case "Mary": prefix = "Mrs. "
+  default: prefix = "Dude "
+}
+```
 
-In go, cases can be expressions, not just values like in many other languages.
+Also, you don't need an expression after the switch, and you can use expressions in the case statements.
+```go
+switch {
+case name == "Bob":
+  prefix = "Mr. "
+case name == "Joe", name == "Amy":
+  prefix = "Dr. "
+case name == "Mary":
+  prefix = "Mrs. "
+default:
+  prefix = "Dude "
+}
+```
 
 We can switch on types in go. There is special syntax for this.
