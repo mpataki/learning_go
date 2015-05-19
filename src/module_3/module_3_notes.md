@@ -1,4 +1,4 @@
-### Module 2: Branching
+### Module 3: Branching
 
 `if` statements work pretty much the same as in other languages. However there are a couple of things to notice. The `{}` braces are mandatory, and there are no parenthesis. Ex:
 ```go
