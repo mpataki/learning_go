@@ -35,13 +35,7 @@ for i := 0; i < 10; i++ {
 ```
 Here `"got here!"` would only print 6 times.
 
-We also have a `range` keyword that will help us loop through a collection.
-```go
-for element {
-  fmt.println(element)
-}
-```
-Ranges will work over arrays, slices, strings, maps, and channels.
+We also have a `range` keyword that will help us loop through a collection. `range` will work over arrays, slices, strings, maps, and channels. (In face with channel, this will be a blocking loop as it waits for input on the channel - pretty cool)
 ```go
 for i, s := range slice {
   // ...
