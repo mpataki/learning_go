@@ -9,7 +9,7 @@ type Salutation struct {
 
 type Printer func(string)
 
-func Greet(salutation Salutation, do Printer, isFormal bool) {
+func Greet(salutation Salutation, do Printer, isFormal bool, times int) {
 	message1, message2 := CreateMessage(salutation.Name, salutation.Greeting)
 
 	if prefix := GetPrefix(salutation.Name); isFormal {
