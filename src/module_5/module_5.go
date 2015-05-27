@@ -10,7 +10,11 @@ func GetPrefix(name string) (prefix string) {
 		"Mary": "Ms.",
 	}
 
-	return prefixMap[name]
+	if value, exists := prefixMap[name]; exists {
+		return value
+	}
+
+	return "Dude"
 }
 
 func main() {
