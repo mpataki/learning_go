@@ -22,3 +22,15 @@ prefixMap["Bob"] = "Mr."
 name := "Bob"
 fmt.Println(prefixMap[name], name) // prints "Mr. Bob"
 ```
+
+We can declare a map with content using the initialization operator:
+```go
+prefixMap := map[string]string{
+    "Bob":  "Mr.",
+    "Joe":  "Dr.",
+    "Amy":  "Dr.",
+    "Mary": "Ms.",
+  }
+```
+Notice the final comma even on the last line. This is required.
+
