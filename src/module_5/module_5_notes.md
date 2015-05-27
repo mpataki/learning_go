@@ -14,3 +14,11 @@ The type int the brackets `[]`, in this case `[string]` is our key type, and the
 ```go
 someMapName = make(map[string]string)
 ```
+
+Insert and lookup is pretty straight forward:
+```go
+prefixMap = make(map[string]string)
+prefixMap["Bob"] = "Mr."
+name := "Bob"
+fmt.Println(prefixMap[name], name) // prints "Mr. Bob"
+```
