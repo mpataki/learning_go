@@ -43,7 +43,7 @@ Deleting from a map is done as follows:
 ```go
 delete(prefixMap, "Mary")
 ```
-It should be noted that `delete` can be called on a map with a key that doesn't exist as well. Older versions of go don't have the `delete` method and instead use:
+It should be noted that `delete` can be called on a map with a key that doesn't exist. Older versions of go don't have the `delete` method and instead use:
 ```go
 prefixMap["Mary"] = "", false
 ```
