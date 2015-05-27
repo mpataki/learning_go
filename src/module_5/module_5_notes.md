@@ -38,3 +38,13 @@ Updating a map is also exactly how you would think:
 ```go
 prefixMap["Joe"] = "Jr."
 ```
+
+Deleting from a map is done as follows:
+```go
+delete(prefixMap, "Mary")
+```
+Older versions of go don't have the `delete` method and instead use:
+```go
+prefixMap["Mary"] = "", false
+```
+But this is no longer the preferred way of deleting from maps.
