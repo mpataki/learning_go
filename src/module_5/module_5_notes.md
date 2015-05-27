@@ -34,3 +34,7 @@ prefixMap := map[string]string{
 ```
 Notice the final comma even on the last line. This is required.
 
+Updating a map is also exactly how you would think:
+```go
+prefixMap["Joe"] = "Jr."
+```
