@@ -1,9 +1,9 @@
 ### Module 5: Maps
 
 A couple of points to start us off:
-1. You can make almost any variable a key in a map. The only constraint is that it must have the `==` operator defined on it.
-2. Maps are reference types. This means that when you pass it around, it is passed by reference.
-3. Maps are not thread safe.
+1.  You can make almost any variable a key in a map. The only constraint is that it must have the `==` operator defined on it.
+2.  Maps are reference types. This means that when you pass it around, it is passed by reference.
+3.  Maps are not thread safe.
 
 This is how we declare a map:
 ```go
