@@ -4,6 +4,11 @@ Slices are built on arrays. An array in go is the same in many ways as an array 
 
 Slices are generally more useful in go. They are pointers to arrays, which means that although the pointer gets passed by value when used as a parameter, the underlying array does not, making them easier to pass around.
 
-When slices are declared, they are nil to begin with and can't be used. We must call the `make` function on them to initialize.
+When slices are declared, they are nil to begin with and can't be used. We must call the `make` function on them to initialize. Here is an example using the long form:
+```go
+  var s []int
+  s = make([]int, 3, 10)
+```
+Here `[]int`, notice the brackets without the number in it, declares the slice. We then call `make` with the slice type, a length, and a capacity. The length is how many items will be in the array to begin with, and the capacity indicates the size of the underlying array. This means that we can `append` to this slice until it is of length 10 before we need to reallocate.
 
 A slice itself is fixed in size, but we can use `append` to make it grow.
