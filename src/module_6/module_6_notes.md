@@ -30,3 +30,13 @@ Here we are assigning `s2` to `0` through `1` indices inclusively. If we wanted 
 s2 = s[:1]
 ```
 This would assign everything up to index `1`.
+
+We often want to append to a slice. Here's how that goes:
+```go
+s = append(s, 4)
+```
+If the slice doesn't have the capacity to hold what we are trying to append, it will allocate a new underlying array, copy all of the existing elements over, and finally, copy the new new value as well. We can also append other slices:
+```go
+s = append(s, s2...)
+```
+The `...` indicates a variable number of arguments.
