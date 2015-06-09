@@ -20,3 +20,13 @@ We can also declare and initialize a slice using a literal, which makes it much 
 ```go
 s2 := []int { 1, 2, 3 }
 ```
+
+We often want to divide slices up into smaller parts. Here's how we might do that using the slice defined above:
+```go
+s2 = s[0:1]
+```
+Here we are assigning `s2` to `0` through `1` indices inclusively. If we wanted to we could also leave off the index before or after the colon. For example:
+```go
+s2 = s[:1]
+```
+This would assign everything up to index `1`.
