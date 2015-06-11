@@ -12,3 +12,11 @@ func(salutations Salutations)Greet(do Printer, isFormal bool, times int){
   //...
 }
 ```
+
+Now let's see an example where we operate on a pointer to a type:
+```go
+func (salutation *Salutation) Rename(newName string) {
+  salutation.Name = newName
+}
+```
+Notice the `*` in front of the type indicating a pointer. This means that the change to the `Name` property on whatever `Salutation` struct that will call this on will be modified, and persistently changed afterwards.

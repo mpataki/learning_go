@@ -23,6 +23,10 @@ func(salutations Salutations) Greet(do Printer, isFormal bool, times int){
   }
 }
 
+func (salutation *Salutation) Rename(newName string) {
+  salutation.Name = newName
+}
+
 func GetPrefix(name string) (prefix string) {
   switch name {
   case "Bob":
@@ -77,6 +81,8 @@ func main() {
     {"Joe", "Hi"},
     {"Merry", "What is up?"},
   }
+
+  salutations[0].Rename("John")
 
   salutations.Greet(CreatePrintFunction("?"), true, 6)
 }
