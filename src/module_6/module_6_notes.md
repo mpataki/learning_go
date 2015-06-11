@@ -29,7 +29,7 @@ Here we are assigning `s2` to `0` through `1` indices inclusively. If we wanted 
 ```go
 s2 = s[:1]
 ```
-This would assign everything up to index `1`.
+This would assign everything up to index `1` exclusively.
 
 We often want to append to a slice. Here's how that goes:
 ```go
@@ -40,3 +40,9 @@ If the slice doesn't have the capacity to hold what we are trying to append, it 
 s = append(s, s2...)
 ```
 The `...` indicates a variable number of arguments.
+
+We also may want to delete from a slice. This is done as follows:
+```go
+slice = append(slice[:1], slice[2:]...)
+```
+This will delete index `1` from the slice.

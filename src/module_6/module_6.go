@@ -13,4 +13,10 @@ func main() {
 
   // short form
   s2 := []int { 1, 2, 3 }
+
+  fmt.Println(s2[:1]) // will print [1]
+
+  s2 = append(s2[:1], s2[2:]...)
+
+  fmt.Println(s2) // will print [1, 3]
 }
