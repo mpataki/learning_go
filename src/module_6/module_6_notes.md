@@ -46,3 +46,11 @@ We also may want to delete from a slice. This is done as follows:
 slice = append(slice[:1], slice[2:]...)
 ```
 This will delete index `1` from the slice.
+
+Lastly, we iterate over a slice as follows:
+```go
+for _, s := range slice {
+  fmt.Println(s)
+}
+```
+Recall the first return value from range is the index, which we aren't using. Therefore, we need to use `_` to indicate that we won't be using it.
