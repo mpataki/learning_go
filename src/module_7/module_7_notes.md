@@ -20,3 +20,32 @@ func (salutation *Salutation) Rename(newName string) {
 }
 ```
 Notice the `*` in front of the type indicating a pointer. This means that the change to the `Name` property on whatever `Salutation` struct that will call this on will be modified, and persistently changed afterwards.
+
+Interfaces are dead simple in go. To begin with, you define what makes up the interface, like so:
+```go
+type Renamable interface {
+  Rename(newName string)
+}
+```
+Implementing the interface just involves defining the methods listed in the interface.
+```go
+type Salutation struct {
+  Name string
+}
+
+func (salutation *Salutation) Rename(newName string) {
+  salutation.Name = newName
+}
+```
+This is all that's required for a `struct` to implement an interface. Which means we can now do things like this:
+```go
+func RenameToFrog(r Renameable) {
+  r.Rename("Frog")
+}
+
+func main() {
+  s := Salutation { "MyName" }
+  RenameToFrog(&s)
+  // now s.Name == "Frog"
+}
+```
