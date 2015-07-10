@@ -57,3 +57,21 @@ func TypeSwitchTest(x interface{}) {
 }
 ```
 We know that in order for a type to implement an interface, it must implement the methods listed in the interface. However, because there are no methods to implement in the empty interface, any type implements that interface. We often see this used as we do above, which allows us to pass a variable of any type into the function.
+
+The `Writer` interface is built into go, and looks like this:
+```go
+type Writer interface {
+  Write(p byte[]) (n int, err error)
+}
+```
+
+We can have out `Salutation` type implement this interface as follows:
+```go
+func (salutation *Salutation) Write(p byte[]) (n int, err error) {
+  s := string(p)
+  salutation.ReName(s)
+  n = len(s)
+  err = nil
+  return
+}
+```
