@@ -39,7 +39,7 @@ func (salutation *Salutation) Rename(newName string) {
 ```
 This is all that's required for a `struct` to implement an interface. Which means we can now do things like this:
 ```go
-func RenameToFrog(r Renameable) {
+func RenameToFrog(r Renamable) {
   r.Rename("Frog")
 }
 

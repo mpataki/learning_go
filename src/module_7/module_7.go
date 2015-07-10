@@ -7,6 +7,14 @@ type Salutation struct {
   Greeting string
 }
 
+type Renamable interface {
+  Rename(newName string)
+}
+
+func RenameToFrog(r Renamable) {
+  r.Rename("Frog")
+}
+
 type Salutations []Salutation
 
 type Printer func(string)
@@ -83,6 +91,10 @@ func main() {
   }
 
   salutations[0].Rename("John")
+  // name is now "John"
+
+  RenameToFrog(&salutations[0])
+  // Name is now "Frog"
 
   salutations.Greet(CreatePrintFunction("?"), true, 6)
 }
