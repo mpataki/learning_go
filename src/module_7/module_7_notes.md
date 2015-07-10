@@ -8,7 +8,7 @@ It be noted that if we want to declare a method on a type that is provided by th
 ```go
 type Salutations []Salutation
 
-func(salutations Salutations)Greet(do Printer, isFormal bool, times int){
+func(salutations Salutations) Greet(do Printer, isFormal bool, times int){
   //...
 }
 ```
@@ -49,3 +49,11 @@ func main() {
   // now s.Name == "Frog"
 }
 ```
+
+We've used the empty interface in our examples already, like this:
+```go
+func TypeSwitchTest(x interface{}) {
+  // ...
+}
+```
+We know that in order for a type to implement an interface, it must implement the methods listed in the interface. However, because there are no methods to implement in the empty interface, any type implements that interface. We often see this used as we do above, which allows us to pass a variable of any type into the function.
