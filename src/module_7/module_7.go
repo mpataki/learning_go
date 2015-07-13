@@ -83,6 +83,14 @@ func CreatePrintFunction(custom string) Printer {
   }
 }
 
+func (salutation *Salutation) Write(p []byte) (n int, err error) {
+  s := string(p)
+  salutation.Rename(s)
+  n = len(s)
+  err = nil
+  return
+}
+
 func main() {
   salutations := Salutations{
     {"Bob", "Hello"},
@@ -95,6 +103,8 @@ func main() {
 
   RenameToFrog(&salutations[0])
   // Name is now "Frog"
+
+  fmt.Fprintf(&salutations[1], "The count is %d.", 10)
 
   salutations.Greet(CreatePrintFunction("?"), true, 6)
 }

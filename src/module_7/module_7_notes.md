@@ -65,13 +65,22 @@ type Writer interface {
 }
 ```
 
-We can have out `Salutation` type implement this interface as follows:
+We can have our `Salutation` type implement this interface as follows:
 ```go
-func (salutation *Salutation) Write(p byte[]) (n int, err error) {
+func (salutation *Salutation) Write(p []byte) (n int, err error) {
   s := string(p)
-  salutation.ReName(s)
+  salutation.Rename(s)
   n = len(s)
   err = nil
   return
+}
+```
+
+Because our `Salutaion` class implements the `Writer` interface, we can pass an instance of it to methods that take in a writer class. For example `fmt.Fprintf`.
+```go
+import "fmt"
+
+func main() {
+  fmt.Fprintf(&salutation, "The count is %d.", 10)
 }
 ```
