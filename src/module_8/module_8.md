@@ -20,4 +20,4 @@ func main(){
 }
 ```
 
-The output from this bit of code would be `B` followed by `A`. This is because the printing of `A` is being done by a separate thread that only gets to execute once the first thread has given up the runtime. You'll also notice that we are using the `time` library to synchronize. This is obviously not the ideal way to do this, but we'll get into more idiomatic approaches to synchronization next.
+The output from this bit of code is `B` followed by `A`. This is because the printing of `A` is being done by a separate thread that only gets to execute once the first thread has given up the runtime. You'll also notice that we are using the `time` library to synchronize. This is obviously not the ideal way to do this, but we'll get into more idiomatic approaches to synchronization next.
