@@ -2,7 +2,6 @@ package main
 
 import (
   "fmt"
-  "time"
 )
 
 type Salutation struct {
@@ -109,8 +108,13 @@ func main() {
 
   fmt.Fprintf(&salutations[1], "The count is %d.", 10)
 
-  go salutations.Greet(CreatePrintFunction("<C>"), true, 6)
-  salutations.Greet(CreatePrintFunction("?"), true, 6)
+  done := make(chan bool)
 
-  time.Sleep(100 * time.Millisecond)
+  go func() {
+    PrintLine("Second")
+    done <- true
+  }()
+
+  PrintLine("first")
+  <- done
 }

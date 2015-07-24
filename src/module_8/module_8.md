@@ -1,6 +1,6 @@
 ### Module 8: Concurrency
 
-Go was designed with currency in mind, and has concurrent constructs built right into the language. This makes it pretty unique as in most languages, currency is achieved with the help of an extra library, or through very deliberate attention being given to the problem.
+Go was designed with currency in mind, and has concurrent constructs built into the language. This makes it pretty unique as in most languages, currency is achieved with the help of an extra library, or through very deliberate attention being given to the problem.
 
 It's often said about go: "Do not communicate by sharing memory. Instead, share memory by communicating".
 
