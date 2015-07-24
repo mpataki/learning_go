@@ -20,4 +20,28 @@ func main(){
 }
 ```
 
-The output from this bit of code is `B` followed by `A`. This is because the printing of `A` is being done by a separate thread that only gets to execute once the first thread has given up the runtime. You'll also notice that we are using the `time` library to synchronize. This is obviously not the ideal way to do this, but we'll get into more idiomatic approaches to synchronization next.
+The output from this bit of code is `B` followed by `A`. This is because the printing of `A` is being done by a separate thread that only gets to execute once the first thread has given up the runtime. You'll also notice that we are using the `time` library to synchronize. This is obviously not the ideal way to do this, so let's take a more idiomatic approach to synchronization next.
+
+Channels are created much like slices or maps:
+```go
+done := make(chan bool)
+```
+This makes a channel that can pass boolean values, and stores it in done. We use the `<-` operator to read from and write to a channel, like so:
+```go
+done <- true   // write to the done channel
+flag <- done   // read from the done channel
+```
+When reading from a channel, the operation is blocking if there is nothing on the channel. Therefore, we can use the channel as a method of synchronization.
+
+```go
+  done := make(chan bool)
+
+  go func() {
+    PrintLine("second")
+    done <- true
+  }()
+
+  PrintLine("first")
+  <- done
+```
+This declares and defines the `done` channel, defines an anonymous function in-line, and runs it on a goroutine (creating a closure from which it can access the channel). Kicking off the goroutine is a non-blocking action, while reading from the channel is, allowing the main thread to print `"first"` before blocking and waiting for the second thread to finish printing `"second"`, and writing to the channel. The second thread then returns, and the first can wake up as there is now data on the channel for it to read.

@@ -111,7 +111,7 @@ func main() {
   done := make(chan bool)
 
   go func() {
-    PrintLine("Second")
+    PrintLine("second")
     done <- true
   }()
 
