@@ -93,20 +93,19 @@ func (salutation *Salutation) Write(p []byte) (n int, err error) {
   return
 }
 
+func (salutations Salutations) ChannelGreet(c chan Salutation) {
+  for _, s := range salutations {
+    c <- s
+  }
+  close(c)
+}
+
 func main() {
   salutations := Salutations{
     {"Bob", "Hello"},
     {"Joe", "Hi"},
     {"Merry", "What is up?"},
   }
-
-  salutations[0].Rename("John")
-  // name is now "John"
-
-  RenameToFrog(&salutations[0])
-  // Name is now "Frog"
-
-  fmt.Fprintf(&salutations[1], "The count is %d.", 10)
 
   done := make(chan bool)
 
@@ -117,4 +116,11 @@ func main() {
 
   PrintLine("first")
   <- done
+
+  c := make(chan Salutation, 10)
+  salutations.ChannelGreet(c)
+
+  for s := range c {
+    PrintLine(s.Name)
+  }
 }

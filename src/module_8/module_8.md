@@ -61,3 +61,19 @@ To make this a buffered channel, we would declare the size of the buffer as foll
 ```go
 done := make(chan boolean, 2)
 ```
+
+We can use `range` to loop over a channel as follows:
+```go
+for a := range someChannel {
+  // do some stuff
+}
+```
+However, if the writer channel ever stop sending, the above loop will cause the reader thread to block. If we want to avoid this, the writer can `close` the channel. This will cause the reader to break out of it's loop. Here's an example writer:
+```go
+func (salutations Salutations) ChannelGreet(c chan Salutation) {
+  for _, s := range salutations {
+    c <- s
+  }
+  close(c)
+}
+```
