@@ -45,3 +45,19 @@ When reading from a channel, the operation is blocking if there is nothing on th
   <- done
 ```
 This declares and defines the `done` channel, defines an anonymous function in-line, and runs it on a goroutine (creating a closure from which it can access the channel). Kicking off the goroutine is a non-blocking action, while reading from the channel is, allowing the main thread to print `"first"` before blocking and waiting for the second thread to finish printing `"second"`, and writing to the channel. The second thread then returns, and the first can wake up as there is now data on the channel for it to read.
+
+It should be noted that our definition of the channel above makes it a non-buffered channel, meaning that it can only hold one item. Consider what would happen if we had written the anonymous function like this instead:
+```go
+go func() {
+  PrintLine("second")
+  done <- true
+  done <- true
+  PrintLine("Never")
+}()
+```
+Here the first `done <- true` would push `true` onto the channel, but the second one would cause the thread to block, waiting for there to be room on the channel to push the additional `true`. In this case, we would never see `"Never"` get printed as the channel isn't read from twice, making the thread block forever.
+
+To make this a buffered channel, we would declare the size of the buffer as follows:
+```go
+done := make(chan boolean, 2)
+```
