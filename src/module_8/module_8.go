@@ -123,4 +123,30 @@ func main() {
   for s := range c {
     PrintLine(s.Name)
   }
+
+  // now for a select example
+  ch1 := make(chan Salutation, 10)
+  ch2 := make(chan Salutation, 10)
+
+  go salutations.ChannelGreet(ch1)
+  go salutations.ChannelGreet(ch2)
+
+  for {
+    select {
+      case s, ok := <- ch1:
+        if ok {
+          fmt.Println(s, ":1")
+        } else {
+          return
+        }
+      case s, ok := <- ch2:
+        if ok {
+          fmt.Println(s, ":2")
+        } else {
+          return
+        }
+      default:
+        fmt.Println("Waiting...")
+    }
+  }
 }

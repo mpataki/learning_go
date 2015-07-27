@@ -77,3 +77,32 @@ func (salutations Salutations) ChannelGreet(c chan Salutation) {
   close(c)
 }
 ```
+
+Now let's look at the `select` statement. `select` works like a `switch` statement for channels. You list a few channels within the `select`, and go will execute the block associated with the first case that is ready. If more than one become ready at the same time, go will choose one at random. If no cases are ready, the thread will either execute a default block, or the thread will block, waiting for a case to become ready. Here's how it looks:
+```go
+ch1 := make(chan Salutation, 10)
+ch2 := make(chan Salutation, 10)
+
+go salutations.ChannelGreet(ch1)
+go salutations.ChannelGreet(ch2)
+
+for {
+  select {
+    case s, ok := <- ch1:
+      if ok {
+        fmt.Println(s, ":1")
+      } else {
+        return
+      }
+    case s, ok := <- ch2:
+      if ok {
+        fmt.Println(s, ":2")
+      } else {
+        return
+      }
+    default:
+      fmt.Println("Waiting...")
+  }
+}
+```
+Here you can see that we are assigning `s`, a greeting string, and `ok`, a flag indicating that the channel is still open.
