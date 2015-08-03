@@ -1,12 +1,10 @@
-Bare with this repo as I learn me some Go.
-
-- Module 1: Variables, Types, and Pointers
-- Module 2: Functions
-- Module 3: Branching
-- Module 4: Loops
-- Module 5: Maps
-- Module 6: Slices
-- Module 7: Methods & Interfaces
-- Module 8: Concurrency
+- [Module 1: Variables, Types, and Pointers](src/module_1/module_1_notes.md)
+- [Module 2: Functions](src/module_2/module_2_notes.md)
+- [Module 3: Branching](src/module_3/module_3_notes.md)
+- [Module 4: Loops](src/module_4/module_4_notes.md)
+- [Module 5: Maps](src/module_5/module_5_notes.md)
+- [Module 6: Slices](src/module_6/module_6_notes.md)
+- [Module 7: Methods & Interfaces](src/module_7/module_7_notes.md)
+- [Module 8: Concurrency](src/module_8/module_8_notes.md)
 
 [Go Language Spec](https://golang.org/ref/spec)
