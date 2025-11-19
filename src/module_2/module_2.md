@@ -3,7 +3,7 @@
 - Functions in Go can have multiple return values
 - We can pass go function just like any other type, similar to javascript
 - We can declare function inside of other functions
--- This gives us closure behavior
+-- This gives us closure behaviour
 
 When declaring a function, much like variables, the name of params comes first, then the type:
 ```go
@@ -76,7 +76,7 @@ func CreateMessage(name, greeting ...string) (message1 string, message2 string) 
 ```
 Notice that we use the built in `len` method to find the length of the given parameter.
 
-Functions in go are their own types. We can pass them as parameters into other function so long as we specify the function signature:
+Functions in go are their own types. We can pass them as parameters into other functions so long as we specify the function signature:
 ```go
 func Greet(salutation Salutation, do func(string)) {
   message1, message2 := CreateMessage(salutation.name, salutation.greeting, "yo")
