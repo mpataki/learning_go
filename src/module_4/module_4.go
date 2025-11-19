@@ -1,6 +1,6 @@
 package main
 
-import "../greeting"
+import "learning_go/src/greeting"
 
 func main() {
 	slice := []greeting.Salutation{
